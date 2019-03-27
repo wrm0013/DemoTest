@@ -37,10 +37,10 @@ android {
 
     android.applicationVariants.all { variant ->
         variant.outputs.all {
-            if (IS_JENKINS) {
-                outputFileName = "android_jenkins_${APP_VERSION}_${releaseTime()}.apk"
+            if ("true".equals(IS_JENKINS)) {
+                outputFileName = "android_jenkins_${variant.buildType.name}_${APP_VERSION}_${releaseTime()}.apk"
             } else
-                outputFileName = "android_${APP_VERSION}_${releaseTime()}.apk"
+                outputFileName = "android_${variant.buildType.name}_${APP_VERSION}_${releaseTime()}.apk"
         }
     }
 }
